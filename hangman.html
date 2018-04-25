@@ -7,14 +7,14 @@
 </head>
 
 <body>
-    <h1>Computers Say?</h1>
+    <h1 id="header">Computers Say?</h1>
     <canvas id="myCanvas"></canvas>
 
     <div id="interact">
         <input id="letter" type="text" placeholder="Letter" maxlength="1">
         <button onclick="guess();">Guess</button>
     </div>
-
+    <button onclick="window.location.reload();">Restart</button>
     <script src="hangman.js"></script>
 </body>
 

@@ -7,6 +7,7 @@ var maxGuesses = 10;
 var currentDraw = drawNormal;
 var spacing = 60;
 
+
 var images = [];
 for (var i = 0; i <= maxGuesses; i++) {
     var img = new Image();
