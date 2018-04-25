@@ -1,22 +1,42 @@
 
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
-var imgs = [];
 var counter = 0;
 var letters = [];
+var secretWord = 'bob';
 
+var images = [];
 for(var i = 0; i < 11; i++){
     var img = new Image();
     img.src = 'img/hang'+i+'.gif';
-    imgs.push(img);
+    images.push(img);
 }
 
-window.onload = function() {
-    ctx.drawImage(imgs[counter],10,10);
-};
+window.addEventListener('resize', fit);
+window.onload = fit();
+
+function fit(){
+    ctx.canvas.width  = window.innerWidth;
+    ctx.canvas.height = window.innerHeight/2;
+    draw()
+}
 
 function guess(){
-    var letter = document.getElementById('letter').value;
+    var field = document.getElementById('letter');
+    var letter = field.value;
+    field.value = '';
     letters.push(letter);
-    console.log(letters);
+    draw();
+}
+
+function draw(){
+    ctx.font="60px Georgia";
+    ctx.drawImage(images[counter],10,10);
+
+    for(var n = 0; n < secretWord.length; n++)
+            ctx.fillText('_',n*50,200);
+
+    for(var i = 0; i < 11; i++)
+        if(letters[i] != undefined)
+            ctx.fillText(letters[i],i*50,300);
 }
