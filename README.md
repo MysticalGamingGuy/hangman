@@ -1,9 +1,9 @@
 
 ## Hangman
-A simple game of hangman.
+A simple game of hangman. By Ian Moody
 
 ## Running
-To run this demo,
+To run this demo:
 
 1. Download and unzip
 2. Open up 'hangman.html' in your browser
@@ -18,5 +18,7 @@ To run this demo,
 ## Playing 
 
 enter one character into the 'letter' field.
+
 Press 'Guess'
+
 Reset when desired.
