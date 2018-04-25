@@ -2,9 +2,10 @@ var canvas = document.getElementById("myCanvas");
 var context = canvas.getContext("2d");
 var counter = 0;
 var letters = [];
-var secretWord = 'bob';
+var secretWord = 'helloworld';
 var maxGuesses = 10;
 var currentDraw = drawNormal;
+var spacing = 60;
 
 var images = [];
 for (var i = 0; i <= maxGuesses; i++) {
@@ -24,7 +25,7 @@ function fit() {
 
 function guess() {
     var field = document.getElementById('letter');
-    var letter = (field.value).charAt(0);
+    var letter = (field.value).toLowerCase().charAt(0);
     field.value = '';
 
     //Make sure the letter hasn't already been guessed
@@ -60,7 +61,6 @@ function checkWin() {
 //The normal state of drawing
 function drawNormal() {
     context.clearRect(0, 0, canvas.width, canvas.height);
-    context.font = "60px Georgia";
     context.drawImage(images[counter], 10, 10);
     drawSecretWord();
     drawIncorrectLetters();
@@ -84,13 +84,19 @@ function drawWin() {
 
 //Draw Parts of Secret Words
 function drawSecretWord() {
+    context.font = "60px Georgia";
     for (var n = 0; n < secretWord.length; n++)
-        context.fillText( letters.includes(secretWord.charAt(n))? secretWord.charAt(n): '_', n * 50, 200);
+        context.fillText( letters.includes(secretWord.charAt(n))? secretWord.charAt(n): '_', n * spacing, 200);
 }
 
 //Draw Incorrect Letters
 function drawIncorrectLetters() {
-    for (var i = 0; i < 11; i++)
-        if (letters[i] != undefined && !secretWord.includes(letters[i]))
-            context.fillText(letters[i], i * 50, 300);
+    context.font = "60px Georgia";
+    var offset = 0;
+    for (var i = 0; i < letters.length; i++) {
+        if (letters[i] != undefined && !secretWord.includes(letters[i])) {
+            context.fillText(letters[i], offset, 300);
+            offset+=spacing;
+        }
+    }
 }
