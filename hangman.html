@@ -1,13 +1,17 @@
 <html>
 
 <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
 </head>
 
 <body>
-    <canvas id="myCanvas" width="200" height="100"></canvas>
-    <input type="text" placeholder="Letter">
-    <button>Guess</button>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+    <input id="letter" type="text" placeholder="Letter" maxlength="1">
+    <button onclick="guess();">Guess</button>
+
     <script src="hangman.js"></script>
+
 </body>
 
 </html>
